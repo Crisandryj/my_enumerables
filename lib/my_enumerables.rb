@@ -9,6 +9,24 @@ end
 class Array
   # Define my_each here
   def my_each
-    p
+    n = 0
+    while n < self.length
+      yield(self[n])
+      n+=1
+    end 
+    self
+  end 
+
+  def my_all
+    n = 0
+    while n < self.length 
+    yield(self[n])
+      true
+    else
+      false
+    end 
+    n+=1
+    end
+    
   end 
 end
