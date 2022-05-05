@@ -1,6 +1,8 @@
 module Enumerable
   # Your code goes here
-end
+  def my_all(&block)
+
+  end
 
 # You will first have to define my_each
 # on the Array class. Methods defined in
@@ -16,17 +18,10 @@ class Array
     end 
     self
   end 
+end 
 
-  def my_all
-    n = 0
-    while n < self.length 
-    yield(self[n])
-      true
-    else
-      false
-    end 
-    n+=1
-    end
-    
-  end 
 end
+
+array = [1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+p array.my_all {|num| num > 0}
