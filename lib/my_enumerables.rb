@@ -14,13 +14,13 @@ module Enumerable
     array << yield(n)
   end  
   case array
-   in [true,*,true,true] return true
+   in [true,*,true,true] 
+    true
   else
     false
   end 
-
-
-end
+  end
+end 
  
 # You will first have to define my_each
 # on the Array class. Methods defined in
