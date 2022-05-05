@@ -1,9 +1,25 @@
 module Enumerable
   # Your code goes here
-  def my_all(&block)
-
+  def my_map
+    array = []
+  self.my_each do |n| 
+    array << yield(n)
+  end  
+  array
   end
 
+  def my_all?
+    array = []
+  self.my_each do |n| 
+    array << yield(n)
+  end  
+  case array
+    
+  end 
+
+
+end
+ 
 # You will first have to define my_each
 # on the Array class. Methods defined in
 # your enumerable module will have access
@@ -13,15 +29,11 @@ class Array
   def my_each
     n = 0
     while n < self.length
-      yield(self[n])
-      n+=1
+      yield self[n]
+      n +=1
     end 
-    self
+      self 
   end 
 end 
 
-end
 
-array = [1, 1, 2, 3, 5, 8, 13, 21, 34]
-
-p array.my_all {|num| num > 0}
