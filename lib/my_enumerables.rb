@@ -14,7 +14,9 @@ module Enumerable
     array << yield(n)
   end  
   case array
-    
+   in [true,*,true,true] return true
+  else
+    false
   end 
 
 
