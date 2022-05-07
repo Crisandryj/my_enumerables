@@ -13,11 +13,8 @@ module Enumerable
   self.my_each do |n| 
     array << yield(n)
   end  
-  case array
-   in [true,*,true,true] 
-    true
-  else
-    false
+  array.my_each do |elem| 
+   return elem == true ? true:false
   end 
   end
 end 
