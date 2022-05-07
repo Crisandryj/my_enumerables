@@ -9,13 +9,9 @@ module Enumerable
   end
 
   def my_all?
-    array = []
-  self.my_each do |n| 
-    array << yield(n)
-  end  
-  array.my_each do |elem| 
-   return elem == true ? true:false
-  end 
+  block = block_given? ? -> (elem) {yield elem} : -> (elem) {pattern === elem}
+  my_each {|elem| return false unless block.call(elem)}
+  true
   end
 end 
  
