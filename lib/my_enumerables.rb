@@ -8,8 +8,8 @@ module Enumerable
   array
   end
 
-  def my_all?
-  block = block_given? ? -> (elem) {yield elem} : -> (elem) {pattern === elem}
+  def my_all?(pattern = nil)
+  block = block_given? ? -> (elem) {yield elem}: -> (elem) {pattern === elem}
   my_each {|elem| return false unless block.call(elem)}
   true
   end
