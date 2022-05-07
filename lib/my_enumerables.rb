@@ -9,10 +9,19 @@ module Enumerable
   end
 
   def my_all?(pattern = nil)
-  block = block_given? ? -> (elem) {yield elem}: -> (elem) {pattern === elem}
-  my_each {|elem| return false unless block.call(elem)}
-  true
+    block = block_given? ? -> (elem) {yield elem}: -> (elem) {pattern === elem}
+    my_each {|elem| return false unless block.call(elem)}
+    true
   end
+
+  def my_count
+    counter = 0
+    block = block_given? ? -> (elem) {yield elem}: self.length
+
+    end 
+  end 
+
+
 end 
  
 # You will first have to define my_each
