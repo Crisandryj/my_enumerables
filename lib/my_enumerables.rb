@@ -16,9 +16,9 @@ module Enumerable
 
   def my_count(item = nil)
     count = 0
-    block = block_given? ? -> (elem) {count += 1 if yield elem} : ->(elem) { count += 1 if nil === item }
+    block = block_given? ? -> (elem) {count += 1 if yield elem} : -> (elem) {count += 1 if nil === item}
     my_each {|elem| block.call(elem)}
-     p count
+    count
   end 
 end 
  
