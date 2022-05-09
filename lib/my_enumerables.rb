@@ -36,8 +36,8 @@ module Enumerable
     end 
   end 
 
-  def my_none
-    block = -> (elem) {return false if yield elem}
+  def my_none?
+    block = Proc.new {|elem| return false if yield elem}
     my_each {|elem| block.call(elem)}
     true
   end 
