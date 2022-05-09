@@ -14,11 +14,10 @@ module Enumerable
     true  
   end
 
-  def my_count
-    
-     
-  end 
-
+  def my_count(pattern = nil)
+    count = 0
+    block = block_given? ? -> (elem) {yield elem} : -> (elem) {pattern === elem}
+    my_each {|elem| block_given? ? block.call(elem) : elem.length}
 
 end 
  
