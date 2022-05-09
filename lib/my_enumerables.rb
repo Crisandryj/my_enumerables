@@ -28,8 +28,18 @@ module Enumerable
   end 
 
   def my_each_with_index
-    
+    index = 0
+    block = Proc.new {|elem,index| yield elem,index}
+    my_each do |elem|
+       block.call(elem,index) 
+       index += 1
+    end 
+  end 
 
+  def my_none
+    block = -> (elem) {return false if yield elem}
+    my_each {|elem| block.call(elem)}
+    true
   end 
 
 
