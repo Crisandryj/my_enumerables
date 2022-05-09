@@ -20,6 +20,20 @@ module Enumerable
     my_each {|elem| block.call(elem)}
     count
   end 
+  
+  def my_any?
+    block = Proc.new {|elem| return true if yield elem}
+    my_each {|elem| block.call(elem)}
+    false
+  end 
+
+  def my_each_with_index
+    
+
+  end 
+
+
+
 end 
  
 # You will first have to define my_each
