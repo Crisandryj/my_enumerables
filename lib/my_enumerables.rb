@@ -8,17 +8,17 @@ module Enumerable
   array
   end
 
-  def my_all?(pattern = nil)
-    block = block_given? ? -> (elem) {yield elem} : -> (elem) {pattern === elem}
+  def my_all?
+    block = -> (elem) {yield elem}
     my_each {|elem| return false unless block.call(elem)}
     true  
   end
 
-  def my_count(pattern = nil)
+  def my_count()
     count = 0
-    block = block_given? ? -> (elem) {yield elem} : -> (elem) {pattern === elem}
-    my_each {|elem| block_given? ? block.call(elem) : elem.length}
+    
 
+  end 
 end 
  
 # You will first have to define my_each
