@@ -42,6 +42,13 @@ module Enumerable
     true
   end 
 
+  def my_select
+    array = []
+    block = -> (elem) {array << elem if yield elem}
+    my_each {|elem| block.call(elem)}
+    array
+  end 
+
 
 
 end 
