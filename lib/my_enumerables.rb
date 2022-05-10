@@ -51,39 +51,37 @@ module Enumerable
 
   def my_inject(*args)
     case args
-      in [a] a.is_a? Symbol
-      sym = a
-      in [a] a.is_a? Object
-      initial = a
-      in [a,b] 
-      initial = a
-      sym = b
-    else
-      sym = nil
-      initial = nil
-    end 
-
-    answer = initial || first 
-
-    if block_given?
-      my_each_with_index(elem, i)
-      next if initial.nil? && i.nil?
-
-      answer = yield(answer,elem)
+      in [a] if a.is_a? Symbol
+        sym = a
+      in [a] if a.is_a? Object
+        initial = a
+      in [a, b]
+        initial = a
+        sym = b
+      else
+        initial = nil
+        sym = nil
       end
-     elsif sym
-      my_each_with_index(elem, i)
-      next if initial.nil? && i.nil?
+  
+      answer = initial || first
+  
+      if block_given?
+        my_each_with_index do |ele, i|
+          next if initial.nil? && i.zero?
+  
+          answer = yield(answer, ele)
+        end
+      elsif sym
+        my_each_with_index do |ele, i|
+          next if initial.nil? && i.zero?
+  
+          answer = answer.send(sym, ele)
+        end
+      end
 
-      answer = answer.send(sym, ele)
-    end 
-    answer
-    end 
-
-   end 
-
-
-
+      answer
+    end
+      
 end 
  
 # You will first have to define my_each
