@@ -49,10 +49,38 @@ module Enumerable
     array
   end 
 
-  def my_inject(sum = 0)
-    block = -> (sum,elem) {yield elem}
-    my_each {|elem| block.call(sum,elem)}
-  end 
+  def my_inject(*args)
+    case args
+      in [a] a.is_a? Symbol
+      sym = a
+      in [a] a.is_a? Object
+      initial = a
+      in [a,b] 
+      initial = a
+      sym = b
+    else
+      sym = nil
+      initial = nil
+    end 
+
+    answer = initial || first 
+
+    if block_given?
+      my_each_with_index(elem, i)
+      next if initial.nil? && i.nil?
+
+      answer = yield(answer,elem)
+      end
+     elsif sym
+      my_each_with_index(elem, i)
+      next if initial.nil? && i.nil?
+
+      answer = answer.send(sym, ele)
+    end 
+    answer
+    end 
+
+   end 
 
 
 
