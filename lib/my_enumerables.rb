@@ -49,6 +49,11 @@ module Enumerable
     array
   end 
 
+  def my_inject(sum = 0)
+    block = -> (sum,elem) {yield elem}
+    my_each {|elem| block.call(sum,elem)}
+  end 
+
 
 
 end 
